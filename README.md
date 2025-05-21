@@ -40,8 +40,37 @@ This project uses a monorepo structure with separate packages for the frontend a
 - [x] Repository setup and initial structure
 - [x] Backend configuration with Node.js/TypeScript
 - [x] Frontend setup with React
-- [ ] Documentation setup
-- [ ] CI/CD pipeline configuration
+- [x] Documentation setup
+- [x] CI/CD pipeline configuration
+
+## CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment. The following workflows are configured:
+
+### CI Workflow
+- Runs on every pull request and push to main/develop branches
+- Performs linting, building, and testing
+- Uploads test coverage as an artifact
+
+### Selective CI
+- Performs incremental builds and tests only on affected packages
+- Uses Turborepo's powerful caching and filtering capabilities
+- Only runs builds and tests on packages that changed
+
+### Dependency Audit
+- Automatically checks for security vulnerabilities
+- Runs on schedule (weekly) and when dependencies change
+- Creates GitHub issues for any detected security problems
+
+### Staging Deployment
+- Triggered on pushes to the `develop` branch
+- Deploys the backend to Railway staging environment
+- Deploys the frontend to Vercel preview environment
+
+### Production Deployment
+- Triggered on pushes to the `main` branch
+- Creates GitHub releases automatically
+- Deploys to production environments with zero-downtime deployment
 
 ## Getting Started
 
