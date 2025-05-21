@@ -3,7 +3,11 @@ import dotenv from 'dotenv';
 import path from 'node:path';
 
 // Load environment variables from .env file
-dotenv.config({ path: path.resolve(process.cwd(), '../../.env') });
+// Allow overriding the path via the ENV_PATH environment variable
+const envPath = process.env.ENV_PATH
+  ? path.resolve(process.cwd(), process.env.ENV_PATH)
+  : path.resolve(__dirname, '../../../../.env');
+dotenv.config({ path: envPath });
 
 // Define schema for environment variables with validation
 const envSchema = z.object({
