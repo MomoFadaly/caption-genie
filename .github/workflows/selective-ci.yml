@@ -1,0 +1,61 @@
+name: Selective CI
+
+on:
+  pull_request:
+    branches: ['*']
+
+jobs:
+  selective-build-test:
+    name: Selective Build & Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Needed for Turborepo's file diffing
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine Changed Packages
+        id: changes
+        run: |
+          CHANGED_PKGS=$(npx turbo run build --dry-run=json | jq -r '.tasks | keys | join(",")')
+          echo "Changed packages: $CHANGED_PKGS"
+          echo "packages=$CHANGED_PKGS" >> $GITHUB_OUTPUT
+
+      - name: Run Frontend Checks (if changed)
+        if: contains(steps.changes.outputs.packages, 'frontend')
+        run: |
+          echo "Running frontend checks..."
+          cd packages/frontend
+          npm run lint
+          npm run build
+          npm run test
+
+      - name: Run Backend Checks (if changed)
+        if: contains(steps.changes.outputs.packages, 'backend')
+        run: |
+          echo "Running backend checks..."
+          cd packages/backend
+          npm run lint
+          npm run build
+          npm run test
+      
+      - name: Summary
+        run: |
+          echo "## Selective CI Results :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "The following packages were processed:" >> $GITHUB_STEP_SUMMARY
+          echo "- Changed packages: ${{ steps.changes.outputs.packages }}" >> $GITHUB_STEP_SUMMARY
