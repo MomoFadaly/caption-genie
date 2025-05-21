@@ -62,6 +62,11 @@ src/
    npm run dev
    ```
 
+6. (Optional) Populate the database with demo data:
+   ```
+   npm run seed
+   ```
+
 ### Scripts
 
 - `npm run build` - Build the TypeScript code
