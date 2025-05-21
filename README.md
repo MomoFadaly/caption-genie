@@ -40,8 +40,8 @@ This project uses a monorepo structure with separate packages for the frontend a
 - [x] Repository setup and initial structure
 - [x] Backend configuration with Node.js/TypeScript
 - [x] Frontend setup with React
-- [ ] Documentation setup
-- [ ] CI/CD pipeline configuration
+- [x] Documentation setup
+- [x] CI/CD pipeline configuration
 
 ## CI/CD Pipeline
 
