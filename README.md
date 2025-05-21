@@ -122,6 +122,12 @@ npm run dev:frontend
 # Start only backend
 npm run dev:backend
 ```
+## Documentation
+
+- [Frontend Guide](docs/frontend/README.md)
+- [Backend Guide](docs/backend/README.md)
+- [Development Guide](docs/development.md)
+- [Deployment Guide](docs/deployment.md)
 
 ## License
 
