@@ -1,0 +1,67 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build outputs
+dist
+build
+out
+.next
+.nuxt
+.cache
+
+# Testing
+coverage
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE files
+.idea
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary files
+*.log
+logs
+tmp
+temp
+.temp
+
+# Media files
+*.mp3
+*.mp4
+*.wav
+*.m4a
+*.avi
+*.mov
+*.flac
+*.ogg
+*.webm
+
+# TypeScript
+*.tsbuildinfo
+
+# Task files
+tasks.json
+tasks/ 

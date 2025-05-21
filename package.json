@@ -1,0 +1,26 @@
+{
+  "name": "caption-genie",
+  "version": "1.0.0",
+  "description": "Media transcription service with AI-powered caption generation",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "turbo run start",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.1.0",
+    "turbo": "^1.10.16"
+  }
+} 

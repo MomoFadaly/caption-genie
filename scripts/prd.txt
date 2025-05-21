@@ -1,0 +1,72 @@
+
+
+# Caption Genie – Scalable Transcription System  
+
+## Overview
+
+Caption Genie allows users to submit media (e.g. YouTube URL) and receive accurate transcriptions. The MVP includes a production-grade backend (Node.js, PostgreSQL, Redis) and a minimal React frontend (login, dashboard, URL input). The system supports asynchronous processing via a Redis-backed queue (BullMQ), background workers, and optional WebSocket updates. Designed to be extensible for future mobile apps, team collaboration, or enterprise use.
+
+---
+
+## Tech Stack
+
+* **Backend:** Node.js (Express, TypeScript)
+* **Database:** PostgreSQL
+* **Queue:** Redis + BullMQ
+* **Workers:** Separate Node processes for job handling
+* **Media Handling:** `ytdl-core`, `fluent-ffmpeg`
+* **STT Engines:** Google Cloud STT or OpenAI Whisper
+* **Auth:** JWT with bcrypt and RBAC
+* **Frontend:** React (login, dashboard, job viewer)
+* **Optional:** WebSockets (Socket.io) for real-time updates
+
+---
+
+## Core Backend Features
+
+* **Stateless API Server**: Handles auth, job submission, transcript retrieval. Validates requests, queues jobs (does not process them).
+* **Task Queue**: Jobs (download, transcribe, store) are queued via BullMQ. Durable, retry-enabled, and progress-aware.
+* **Background Workers**: Pick up jobs, download media, extract audio (16kHz mono WAV), transcribe, store result. Isolated, horizontally scalable, retry-enabled.
+* **Job States**: `queued → processing → completed/failed`. Stored in DB and accessible via API or WebSocket events.
+* **Resource Control**: Workers throttle concurrency, handle chunking for large files, and clean up temp storage post-job.
+* **Error Handling**: Retries on transient failures (network, STT API), logs errors, updates job state, notifies user.
+* **Logging & Monitoring**: Winston/Pino + centralized logging; optional Sentry; Prometheus-ready metrics.
+* **Security**: HTTPS, CORS, input sanitization, rate limiting, and role-based endpoint protection.
+
+---
+
+## Minimal Frontend
+
+React SPA with:
+
+* **Homepage** – Basic landing/info
+* **Login/Register** – JWT-based auth
+* **Dashboard** – View jobs, statuses, and full transcripts
+* **Submission Form** – Input video URL, submit transcription
+* **Transcript Viewer** – Read/download results (optional .txt, .srt export)
+* **(Optional)** Real-time job updates via WebSockets
+
+---
+
+## Scalability & Extensibility
+
+* Horizontally scalable API & worker services
+* Queue controls load and isolates failure
+* STT engine is pluggable (Google, Whisper, future APIs)
+* Cloud-ready: Docker/Kubernetes + auto-scaling
+* Built for future features: user teams, billing tiers, real-time collab, analytics
+
+---
+
+## Summary
+
+This MVP PRD defines a scalable transcription backend with async job processing, robust error handling, and a minimal frontend. All components are modular and production-grade. Taskmaster AI should generate tasks to implement:
+
+* Authenticated API (JWT)
+* Redis queue + workers for transcription pipeline
+* Transcription job lifecycle & storage
+* React frontend for submission, status, results
+
+System must be ready to support growing usage and future feature layers.
+
+---

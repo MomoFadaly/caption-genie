@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "generatedAt": "2025-05-21T00:26:28.640Z",
+    "tasksAnalyzed": 15,
+    "thresholdScore": 5,
+    "projectName": "Taskmaster",
+    "usedResearch": true
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 1,
+      "taskTitle": "Setup Project Repository",
+      "complexityScore": 4,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the repository setup task into subtasks covering: 1) repository creation and initial structure, 2) backend configuration with Node.js/TypeScript, 3) frontend setup with React, 4) documentation setup including README and contribution guidelines, and 5) CI/CD pipeline configuration.",
+      "reasoning": "This task involves standard repository setup with moderate complexity due to the monorepo structure and CI/CD configuration. The task requires technical knowledge but follows established patterns."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Implement Job Status and Result Retrieval API",
+      "complexityScore": 5,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the job status and result retrieval API implementation into subtasks covering: 1) endpoint design for job status queries, 2) endpoint design for transcript retrieval, 3) database query optimization for status lookups, 4) response formatting and pagination, 5) error handling for missing or incomplete jobs, and 6) caching strategy for frequent status checks.",
+      "reasoning": "This task has moderate complexity as it requires designing and implementing multiple API endpoints with database interactions, proper error handling, and potentially caching for performance optimization."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Setup Frontend React Project",
+      "complexityScore": 4,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the frontend React project setup into subtasks covering: 1) project initialization with Vite/CRA, 2) folder structure and component organization, 3) routing configuration, 4) state management setup, and 5) environment configuration for different deployment targets.",
+      "reasoning": "Setting up a React project involves standard procedures with moderate complexity due to decisions around project structure, routing, and environment configuration."
+    },
+    {
+      "taskId": 11,
+      "taskTitle": "Implement Login/Register UI",
+      "complexityScore": 5,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the login/register UI implementation into subtasks covering: 1) form design and layout, 2) form validation and error handling, 3) API integration for authentication, 4) JWT storage and management, 5) protected route implementation, and 6) user session management.",
+      "reasoning": "This task involves both UI development and authentication logic integration, requiring careful handling of user data, token storage, and security considerations."
+    },
+    {
+      "taskId": 13,
+      "taskTitle": "Implement Media Submission Form",
+      "complexityScore": 4,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the media submission form implementation into subtasks covering: 1) form design and UI components, 2) URL validation and input sanitization, 3) API integration for job submission, 4) loading state and error handling, and 5) success feedback and redirection logic.",
+      "reasoning": "This task involves standard form implementation with API integration, requiring input validation and user feedback mechanisms."
+    },
+    {
+      "taskId": 15,
+      "taskTitle": "Implement Export and Download Features",
+      "complexityScore": 5,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the export and download features implementation into subtasks covering: 1) UI components for export options, 2) backend API endpoints for generating export files, 3) file format conversion logic for .txt and .srt, 4) file streaming and download handling, 5) progress indicators for large exports, and 6) error handling for failed exports.",
+      "reasoning": "This task involves both frontend and backend components, with complexity in file format handling, streaming responses, and coordinating between client and server for downloads."
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Configure Backend Tech Stack",
+      "complexityScore": 5,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down this task with a focus on configure backend tech stack.",
+      "reasoning": "Automatically added due to missing analysis in AI response."
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "Implement JWT Authentication",
+      "complexityScore": 5,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down this task with a focus on implement jwt authentication.",
+      "reasoning": "Automatically added due to missing analysis in AI response."
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Design and Implement Job Submission API",
+      "complexityScore": 5,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down this task with a focus on design and implement job submission api.",
+      "reasoning": "Automatically added due to missing analysis in AI response."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Implement Background Worker for Media Download",
+      "complexityScore": 5,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down this task with a focus on implement background worker for media download.",
+      "reasoning": "Automatically added due to missing analysis in AI response."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Implement Transcription Worker",
+      "complexityScore": 5,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down this task with a focus on implement transcription worker.",
+      "reasoning": "Automatically added due to missing analysis in AI response."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Set Up Logging and Monitoring",
+      "complexityScore": 5,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down this task with a focus on set up logging and monitoring.",
+      "reasoning": "Automatically added due to missing analysis in AI response."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Implement Security Controls",
+      "complexityScore": 5,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down this task with a focus on implement security controls.",
+      "reasoning": "Automatically added due to missing analysis in AI response."
+    },
+    {
+      "taskId": 12,
+      "taskTitle": "Implement Dashboard and Job Viewer",
+      "complexityScore": 5,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down this task with a focus on implement dashboard and job viewer.",
+      "reasoning": "Automatically added due to missing analysis in AI response."
+    },
+    {
+      "taskId": 14,
+      "taskTitle": "Add Optional WebSocket Updates",
+      "complexityScore": 5,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down this task with a focus on add optional websocket updates.",
+      "reasoning": "Automatically added due to missing analysis in AI response."
+    }
+  ]
+}

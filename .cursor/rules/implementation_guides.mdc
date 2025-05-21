@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Implementation Guide Reference
+
+- **Always Check Implementation Guides First**
+  - Before starting work on any task or subtask, check if an implementation guide exists in the `docs/implementation-guides/` directory
+  - Implementation guides provide critical context, requirements, and integration points needed for proper implementation
+  - Example: For Task 6, refer to `docs/implementation-guides/task-6-transcription-worker.md`
+
+- **Implementation Guide Structure**
+  - Each guide is organized by subtasks with specific implementation points
+  - The **Integration Points** section shows connections to other system components
+  - Some guides reference additional technical specifications in the `docs/specifications/` directory
+
+- **Usage in Task Implementation**
+  - Follow the implementation points as guiding principles for each subtask
+  - Pay special attention to integration points when connecting different components
+  - Ensure your implementation aligns with the specified patterns and approaches
+
+- **Missing Implementation Guides**
+  - If an implementation guide doesn't exist for a task you're working on:
+    1. Check if there's a technical specification in `docs/specifications/`
+    2. Consider creating an implementation guide before starting work
+    3. At minimum, document your implementation approach before coding
+
+- **Guide Format Reference**
+  ```markdown
+  # Task X: Component Name - Implementation Guide
+  
+  ## Subtask X.1: Feature Name
+  - **Implementation Point**: Detailed explanation
+  - **Another Point**: More implementation details
+  ...
+  
+  ## Integration Points
+  - Connections to other system components
+  ```
+- **When Updating Implementation**
+  - Review the implementation guide before making changes
+  - Update the guide if your implementation deviates from the original plan
+  - Document reasons for significant implementation changes
