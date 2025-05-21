@@ -21,6 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "prettier": "^3.1.0",
+    "ts-node-dev": "^2.0.0",
     "turbo": "^1.10.16"
   }
-} 
+}

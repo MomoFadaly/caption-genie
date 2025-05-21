@@ -24,7 +24,7 @@ const format = winston.format.combine(
 );
 
 // Define transports (where logs will be written to)
-const transports = [
+const fileTransports = [
   // Error logs will be written to error.log file
   new winston.transports.File({
     filename: 'logs/error.log',
@@ -34,9 +34,18 @@ const transports = [
   new winston.transports.File({ filename: 'logs/combined.log' }),
 ];
 
-// If we're not in production, log to the console as well
+// Create the logger instance
+const logger = winston.createLogger({
+  level: level(),
+  levels,
+  format,
+  transports: fileTransports,
+  silent: env.NODE_ENV === 'test', // Disable logging in test environment
+});
+
+// If we're not in production, add console transport
 if (env.NODE_ENV !== 'production') {
-  transports.push(
+  logger.add(
     new winston.transports.Console({
       format: winston.format.combine(
         winston.format.colorize(),
@@ -47,14 +56,5 @@ if (env.NODE_ENV !== 'production') {
     }),
   );
 }
-
-// Create the logger instance
-const logger = winston.createLogger({
-  level: level(),
-  levels,
-  format,
-  transports,
-  silent: env.NODE_ENV === 'test', // Disable logging in test environment
-});
 
 export default logger; 

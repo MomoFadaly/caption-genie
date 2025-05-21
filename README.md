@@ -43,6 +43,54 @@ This project uses a monorepo structure with separate packages for the frontend a
 - [ ] Documentation setup
 - [ ] CI/CD pipeline configuration
 
+## CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment. The following workflows are configured:
+
+### CI Workflow
+- Runs on every pull request and push to main/develop branches
+- Performs linting, building, and testing
+- Uploads test coverage as an artifact
+
+### Selective CI
+- Performs incremental builds and tests only on affected packages
+- Uses Turborepo's powerful caching and filtering capabilities
+- Only runs builds and tests on packages that changed
+
+### Dependency Audit
+- Automatically checks for security vulnerabilities
+- Runs on schedule (weekly) and when dependencies change
+- Creates GitHub issues for any detected security problems
+
+### Staging Deployment
+- Triggered on pushes to the `develop` branch
+- Deploys the backend to Railway staging environment
+- Deploys the frontend to Vercel preview environment
+- Sends deployment notifications to Slack
+
+### Production Deployment
+- Triggered on pushes to the `main` branch
+- Deploys the backend to Railway production environment
+- Deploys the frontend to Vercel production environment
+- Creates a GitHub release with release notes
+- Sends deployment notifications to Slack
+
+## Setting Up CI/CD
+
+To set up the CI/CD pipeline, you need to configure the following secrets in your GitHub repository:
+
+- `TURBO_TOKEN`: Token for Turborepo remote caching
+- `TURBO_TEAM`: Team name for Turborepo remote caching
+- `RAILWAY_TOKEN`: API token for Railway deployments
+- `VERCEL_TOKEN`: API token for Vercel deployments
+- `VERCEL_ORG_ID`: Vercel organization ID
+- `VERCEL_PROJECT_ID`: Vercel project ID
+- `SLACK_WEBHOOK`: Webhook URL for Slack notifications
+- `SNYK_TOKEN`: API token for Snyk security scanning
+
+You also need to configure the following variables:
+- `TURBO_TEAM`: Team name for Turborepo (as a variable, not a secret)
+
 ## Getting Started
 
 ### Prerequisites

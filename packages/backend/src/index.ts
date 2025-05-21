@@ -1,3 +1,13 @@
+// Register module aliases
+import 'module-alias/register';
+import path from 'node:path';
+
+// Set up module aliases
+import moduleAlias from 'module-alias';
+moduleAlias.addAliases({
+  '@': path.join(__dirname),
+});
+
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -59,4 +69,4 @@ process.on('uncaughtException', (error: Error) => {
   process.exit(1);
 });
 
-export default app; 
+export default app;

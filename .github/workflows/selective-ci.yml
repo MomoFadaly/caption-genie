@@ -1,0 +1,54 @@
+name: Selective CI
+
+on:
+  pull_request:
+    branches: ['*']
+
+jobs:
+  selective-build-test:
+    name: Selective Build & Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Needed for Turborepo's file diffing
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine Changed Packages
+        id: changes
+        run: |
+          CHANGED_PKGS=$(npx turbo run build --dry-run --filter="...[origin/main]" | grep Packages | cut -d":" -f2 | tr -d '[:space:]')
+          echo "Changed packages: $CHANGED_PKGS"
+          echo "changed_pkgs=$CHANGED_PKGS" >> $GITHUB_OUTPUT
+
+      - name: Build & Test Changed Packages Only
+        if: steps.changes.outputs.changed_pkgs != ''
+        run: |
+          npx turbo run build test lint --filter="...[origin/main]" --output-logs=new-only
+      
+      - name: No Changes Detected
+        if: steps.changes.outputs.changed_pkgs == ''
+        run: echo "No package changes detected. Skipping build and test."
+
+      - name: Upload Selective Build Logs
+        uses: actions/upload-artifact@v3
+        if: always() && steps.changes.outputs.changed_pkgs != ''
+        with:
+          name: turbo-selective-logs
+          path: .turbo/runs
+          retention-days: 5 
