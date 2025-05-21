@@ -12,7 +12,8 @@
     "test": "jest",
     "test:unit": "jest --testMatch='<rootDir>/src/tests/unit/**/*.test.ts'",
     "test:integration": "jest --testMatch='<rootDir>/src/tests/integration/**/*.test.ts'",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "seed": "ts-node src/scripts/seed.ts"
   },
   "_moduleAliases": {
     "@": "src"
