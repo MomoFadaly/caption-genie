@@ -48,7 +48,6 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
     message: 'An unexpected error occurred',
     error: env.NODE_ENV === 'development' ? err.message : undefined,
   });
-  next();
 });
 
 // Start server
