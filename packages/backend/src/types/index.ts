@@ -13,6 +13,7 @@ export interface User {
 export enum UserRole {
   ADMIN = 'admin',
   USER = 'user',
+  CREATOR = 'creator',
 }
 
 // Auth-related types
@@ -45,8 +46,8 @@ export interface MediaItem {
 
 export enum MediaStatus {
   PENDING = 'pending',
-  PROCESSING = 'processing',
-  TRANSCRIBING = 'transcribing',
+  QUEUED = 'queued',
+  IN_PROGRESS = 'in-progress',
   COMPLETED = 'completed',
   FAILED = 'failed',
 }
@@ -56,15 +57,15 @@ export interface Transcription {
   id: string;
   mediaId: string;
   content: string;
-  captions?: TranscriptionSegment[];
   language?: string;
+  captions?: TranscriptionSegment[];
   createdAt: Date;
   updatedAt: Date;
 }
 
 export interface TranscriptionSegment {
-  startTime: number;
-  endTime: number;
+  start: number;
+  end: number;
   text: string;
 }
 
